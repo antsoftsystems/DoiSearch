@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="William Costa Rodrigues - AntSoft Systems On Demand" />
+    <meta name="keywords" content="DOI; Indexador Busca; CrossRef; Buscador; Artigos Científicos; API CrossRef;" />
+    <meta name="description" content="Sistema de busca de dados dos DOI's depositados no CrossRef">
+    <title>AntSoft DS • Buscador de DOI's no CrossRef</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+        crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="http://www.antsoft.com.br/vendor/css/antsoft.css"/> -->
+    <link rel="stylesheet" href="css/ds.css" />
+    <link href="https://www.antsoft.com.br/favicon.png" rel="icon" type="image/png" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top bg-header bg-dark pl-3 pr-3 pb-2 mb-3" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand text-success" href="../../">
+                <img class="m-auto" src="https://www.antsoft.com.br/brand.png"" /></a>
+            <button class=" navbar-toggler bg-danger text-white" type="button" data-toggle="collapse"
+                    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="sr-only small">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="../">Revistas Científicas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">DS Início</a></li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center font-weight-bold"><span class="text-danger">AntSoft DS</span> • <span
+                            class="small">Buscador de DOI's no
+                            CrossRef • Sobre</span></h1>
+                    <hr class="w-100 bg-danger" />
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <h3>Sobre o projeto</h3>
+                    <p class="text-justify">
+                        O Projeto AntSoft DS é  baseado na política OpenSource e foi concebido para ser usado por qualquer desenvolvedor, sem a necessidade de servidor, ou seja, funciona apenas com HTML e JavaScript.<br/>
+                        O objetivo do rojeto é facilitar a busca das publicações, cujo os metadados, foram depositados no CrossRef, atráves da sua API.
+                    </p>
+                    <h4>O que nosso projeto usa:</h4>
+                    <ul style="list-style:square;">
+                       <li><a href="https://www.w3c.br/Home/WebHome/" target="_blank"  class="nav-link-list">Html</a></li>     
+                       <li><a href="https://jquery.com/" target="_blank"  class="nav-link-list">JQuery</a></li>     
+                       <li><a href="https://api.jquery.com/jquery.ajax/" target="_blank"  class="nav-link-list">Ajax </a></li>     
+                       <li><a href="https://fontawesome.com/" target="_blank"  class="nav-link-list">Font Awesome</a></li>     
+                       <li><a href="https://getbootstrap.com/" target="_blank" class="nav-link-list">Bootstrap </a></li>     
+                       <li><a href="https://github.com/CrossRef/rest-api-doc" class="nav-link-list">CrossRef API</a></li>     
+                    </ul>
+                    
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <h3>Licenciamento</h3>
+                    <p class="text-justify">
+                        <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img
+                            alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este obra está licenciado
+                    com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank">Creative Commons Atribuição 4.0 Internacional</a>.<br/>
+                        Essa licença permite: <br>
+                        <code>
+                            + Compartilhar — copiar e redistribuir o material em qualquer suporte ou formato</code><br>
+                        <code>
+                            + Adaptar — remixar, transformar, e criar a partir do material para qualquer fim, mesmo que comercial. </code><br/>
+                        De acordo com os termos seguintes:<br/>
+                        <code>
+                            + Atribuição — Você deve dar o crédito apropriado, prover um link para a licença e indicar se mudanças foram feitas. Você deve fazê-lo em qualquer circunstância razoável, mas de nenhuma maneira que sugira que o licenciante apoia você ou o seu uso. 
+                        </code><br/>
+                        <code>
+                           + Sem restrições adicionais — Você não pode aplicar termos jurídicos ou medidas de caráter tecnológico que restrinjam legalmente outros de fazerem algo que a licença permita. 
+                        </code>
+                    </p>
+                    <p class="text-justify">
+                        Não são dadas quaisquer garantias. A licença pode não lhe dar todas as autorizações necessárias para o uso pretendido. Por exemplo, outros direitos, tais como direitos de imagem, de privacidade ou direitos morais, podem limitar o uso do material. 
+                    </p>
+                </div>
+            </div>
+            <!-- <hr class="w-100"/>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <h3></h3>
+                    <p class="text-justify">
+
+                    </p>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <h3></h3>
+                    <p class="text-justify">
+                        
+                    </p>
+                </div>
+            </div>
+            <hr class="w-100"/>
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <h3></h3>
+                    <p class="text-justify">
+                        
+                    </p>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <h3></h3>
+                    <p class="text-justify">
+                        
+                    </p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <hr class="w-100" />
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col-6">
+                <div id="antsoft"></div>
+                <div class="text-center small">
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img
+                            alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este obra está licenciado
+                    com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank">Creative Commons Atribuição 4.0 Internacional</a>.
+                </div>
+            </div>
+            <div class="col-6">
+                <span id="version"></span>
+
+                <p class="text-center">Este sistema usa <a href="https://github.com/CrossRef/rest-api-doc"
+                        target="_blank"> API do
+                        CrossRef</a>, extraíndo os dados diretamente da base de dados original.
+                    </p>
+            </div>
+
+        </div>
+    </div>
+    <div class="scroll-top-wrapper">
+        <span class="scroll-top-inner"><i class="fa fa-arrow-up"></i>
+            <br />
+            Topo</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        //ativa o popover
+        $('[data-toggle="popover"]').popover()
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/appinfo.js"></script>
+    <script>
+        $(document).ready(function () {
+            AppInfo();
+        })
+    </script>
+</body>
+
+</html>
