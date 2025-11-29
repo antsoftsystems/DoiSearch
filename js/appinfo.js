@@ -2,7 +2,7 @@
 function AppInfo(){
 
     //Exibe as informações do sistema
-    var DateUpdate = new Date(2020, 08, 03);
+    var DateUpdate = new Date(2025, 10, 29);
     var now = new Date();
     var start = new Date(2020, 1, 1);
     var diff = DateUpdate - start;
@@ -32,4 +32,5 @@ function scrollToTop() {
     offset = element.offset();
     offsetTop = offset.top;
     $('html, body').animate({ scrollTop: offsetTop }, 500, 'linear');
+
 }
