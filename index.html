@@ -1,171 +1,184 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" lang="pt-br">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content="William Costa Rodrigues - AntSoft Systems On Demand" />
-    <meta name="keywords" content="DOI; Indexador Busca; CrossRef; Buscador; Artigos Científicos; API CrossRef;" />
-    <meta name="description" content="Sistema de busca de dados dos DOI's depositados no CrossRef">
-    <title>AntSoft DS • Buscador de DOI's no CrossRef</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
-        integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
-        crossorigin="anonymous" />
-    <!-- <link rel="stylesheet" href="http://www.antsoft.com.br/vendor/css/antsoft.css"/> -->
-    <link rel="stylesheet" href="css/ds.css" />
-    <link href="https://www.antsoft.com.br/favicon.png" rel="icon" type="image/png" />
+
+<head data-include="header">
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg sticky-top bg-header bg-dark pl-3 pr-3 pb-2 mb-3" id="mainNav">
-        <div class="container-fluid">
-            <a class="navbar-brand text-success" href="../../">
-                <img class="m-auto" src="https://www.antsoft.com.br/brand.png"" /></a>
-            <button class="navbar-toggler bg-danger text-white" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="sr-only small">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="../">Revistas Científicas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aboutus.html">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link  text-white" href="https://github.com/antsoftsystems/DoiSearch" target="_blank">Git</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center font-weight-bold"><span class="text-danger">AntSoft DS</span> • <span class="small">Buscador de DOI's no
-                        CrossRef</span></h1>
-                <hr class="w-100 bg-danger" />
-            </div>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title font-weight-bold">Formulário de Busca</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-12">
-                                <label class="font-weight-bold">Termo a ser localizado no CrossRef
-                                    <sup><a class=" superscript text-danger" href="#" data-toggle="popover" data-trigger="focus" title="Ajuda"
-                                            data-content="Os dados informados no termo a ser pesquisado, deve ser compatível com as opções de busca ao lado"><i
-                                                class="fa fa-question-circle"></i></a></sup></label>
-                                <input type="text" class="form-control" id="strDOI">
-                                <label>Ordenação:</label>
-                                <select id="ddlOrder" class="custom-select">
-                                    <option selected value="0">Relevância</option>
-                                    <option selected value="1">Data Atualização</option>
-                                    <option selected value="2">Data Depósito</option>
-                                    <option selected value="3">Data Publicação</option>
-                                    <option selected value="4">Número do volume</option>
-                                    <option selected value="5">Data da publicação impressa</option>
-                                    <option selected value="6">Data da publicação online</option>
-                                </select>
-                                <input type="radio" class="radio" value="0" name="rbOrder" checked/>
-                                <label for="orderAsc" class="mr-3">Crescente</label>
-                                <input type="radio" class="radio" value="1" name="rbOrder" ch />
-                                <label for="orderDesc" class="mr-3">Decrescente</label>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <label class="d-block font-weight-bold">Opções de Busca
-                                    <sup><a class=" superscript text-danger" href="#" data-toggle="popover" data-trigger="focus" title="Ajuda"
-                                        data-content="Cada opção permite um tipo de busca diferente"><i
-                                            class="fa fa-question-circle"></i></a></sup>
-                                </label>
-                                <fieldset id="DOIOption">
-                                    <input type="radio" class="radio" value="0" name="DOIOption" checked/>
-                                    <label for="prefReg" class="mr-3">Prefixo DOI</label>
-                                    
-                                    <input type="radio" class="radio" value="1" name="DOIOption" />
-                                    <label for="doiReg" class="mr-3">DOI do artigo</label>
-                                    
-                                    <input type="radio" class="radio" value="2" name="DOIOption" />
-                                    <label for="doiReg" class="mr-3">Título</label>
-
-                                    <input type="radio" class="radio" value="4" name="DOIOption" />
-                                    <label for="doiReg" class="mr-3">Autor(es)</label>
-
-                                    <input type="radio" class="radio" value="3" name="DOIOption" />
-                                    <label for="doiISSN" class="mr-3">ISSN</label>
-                                    
-                                    <label for="ddlRow" class="mr-3">Itens por busca</label>
-                                    <select class="custom-select" id="ddlRows">
-                                        <option value="20">20 items</option>
-                                        <option value="40">40 items</option>
-                                        <option value="100" selected>100 items</option>
-                                        <option value="200">200 items (lento)</option>
-                                        <option value="500">500 items (muito lento)</option>
-                                        <option value="1000">1000 items (muito demorado)</option>
-
+    <section data-include="menu"></section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center fw-bold">
+                        <span class="text-danger">AntSoft DS</span> • <span class="small">
+                            Buscador de DOI's no
+                            CrossRef
+                        </span>
+                    </h1>
+                    <hr class="w-100 bg-danger" />
+                </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h3 class="card-title fw-bold">Formulário de Busca</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <label class="fw-bold">
+                                        Termo a ser localizado no CrossRef
+                                        <sup>
+                                            <a class="superscript text-danger" href="#" data-bs-toggle="popover"
+                                                data-bs-trigger="focus" title="Ajuda"
+                                                data-bs-content="Os dados informados no termo a ser pesquisado, deve ser compatível com as opções de busca ao lado">
+                                                <i class="fa fa-question-circle"></i>
+                                            </a>
+                                        </sup>
+                                    </label>
+                                    <input type="text" class="form-control" id="strDOI">
+                                    <label>
+                                        Ordenação: <sup>
+                                            <a class="superscript text-danger" href="#" data-bs-toggle="popover"
+                                                data-bs-trigger="focus" title="Ajuda"
+                                                data-bs-content="Você pode ordenar os resultados de acordo com as opções abaixo!">
+                                                <i class="fa fa-question-circle"></i>
+                                            </a>
+                                        </sup>
+                                    </label>
+                                    <select id="ddlOrder" class="form-select">
+                                        <option selected value="0">Relevância</option>
+                                        <option selected value="1">Data Atualização</option>
+                                        <option selected value="2">Data Depósito</option>
+                                        <option selected value="3">Data Publicação</option>
+                                        <option selected value="4">Número do volume</option>
+                                        <option selected value="5">Data da publicação impressa</option>
+                                        <option selected value="6">Data da publicação online</option>
                                     </select>
-                                </fieldset>
+                                    <input type="radio" class="radio" value="0" name="rbOrder" checked />
+                                    <label for="orderAsc" class="mr-3">Crescente</label>
+                                    <input type="radio" class="radio" value="1" name="rbOrder" ch />
+                                    <label for="orderDesc" class="mr-3">Decrescente</label>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <label class="d-block fw-bold">
+                                        Opções de Busca
+                                        <sup>
+                                            <a class=" superscript text-danger" href="#" data-bs-toggle="popover"
+                                                data-bs-trigger="focus" title="Ajuda"
+                                                data-bs-content="Cada opção permite um tipo de busca diferente">
+                                                <i class="fa fa-question-circle"></i>
+                                            </a>
+                                        </sup>
+                                    </label>
+                                    <fieldset id="DOIOption">
+                                        <input type="radio" id="prefReg" class="radio" value="0" name="DOIOption"
+                                            checked />
+                                        <label for="prefReg" class="mr-3">Prefixo DOI</label>
+
+                                        <input type="radio" id="doiArt" class="radio" value="1" name="DOIOption" />
+                                        <label for="doiArt" class="mr-3">DOI do artigo</label>
+
+                                        <input type="radio" id="doiTitle" class="radio" value="2" name="DOIOption" />
+                                        <label for="doiTitle" class="mr-3">Título</label>
+
+                                        <input type="radio" id="doiAuthor" class="radio" value="4" name="DOIOption" />
+                                        <label for="doiAuthor" class="mr-3">Autor(es)</label>
+
+                                        <input type="radio" id="doiISSN" class="radio" value="3" name="DOIOption" />
+                                        <label for="doiISSN" class="mr-3">ISSN</label>
+
+                                        <label for="ddlRow" class="mr-3">
+                                            Itens por busca<sup>
+                                                <a class="superscript text-danger" href="#" data-bs-toggle="popover"
+                                                    data-bs-trigger="focus" title="Ajuda"
+                                                    data-bs-content="Você limitar ou expandir o número de resultados a serem exibidos">
+                                                    <i class="fa fa-question-circle"></i>
+                                                </a>
+                                            </sup>
+                                        </label>
+                                        <select class="form-select" id="ddlRows">
+                                            <option value="20">20 items</option>
+                                            <option value="40">40 items</option>
+                                            <option value="100" selected>100 items</option>
+                                            <option value="200">200 items (lento)</option>
+                                            <option value="500">500 items (muito lento)</option>
+                                            <option value="1000">1000 items (muito demorado)</option>
+
+                                        </select>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <button id="btnSearch" class="btn btn-dark m-2">Pesquisar</button>
+                        <div class="card-footer text-center">
+                            <button id="btnSearch" class="btn btn-dark m-2">Pesquisar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <span id="status"></span>
-                <span id="loading" class="text-danger"></span>
-                <span id="count"></span>
-                <p class="main" id="dois"></p>
+                <div class="col-12">
+                    <span id="status"></span>
+                    <span id="loading" class="text-danger"></span>
+                    <span id="count"></span>
+                    <p class="main" id="dois"></p>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <hr class="w-100" />
     <div class="container-fluid footer">
         <div class="row">
             <div class="col-6">
                 <div id="antsoft"></div>
                 <div class="text-center small">
-                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img
-                        alt="Licença Creative Commons" style="border-width:0"
-                        src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Este obra está licenciado
-                com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
-                    target="_blank">Creative Commons Atribuição 4.0 Internacional</a>.
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+                        <img alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                    </a><br />Este obra está licenciado
+                    com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank">Creative Commons Atribuição 4.0 Internacional</a>.
                 </div>
             </div>
             <div class="col-6">
                 <span id="version"></span>
 
-                <p class="text-center">Este sistema usa <a href="https://github.com/CrossRef/rest-api-doc"
-                        target="_blank"> API do
-                        CrossRef</a>, extraíndo os dados diretamente da base de dados original.</p>
+                <p class="text-center">
+                    Este sistema usa <a href="https://github.com/CrossRef/rest-api-doc" target="_blank">
+                        API do
+                        CrossRef
+                    </a>, extraíndo os dados diretamente da base de dados original.
+                </p>
             </div>
 
         </div>
     </div>
     <div class="scroll-top-wrapper">
-        <span class="scroll-top-inner"><i class="fa fa-arrow-up"></i>
+        <span class="scroll-top-inner">
+            <i class="fa fa-arrow-up"></i>
             <br />
-            Topo</span>
+            Topo
+        </span>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
     <script>
         //ativa o popover
-        $('[data-toggle="popover"]').popover()
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-    <script src="http://www.antsoft.com.br/API/antsoftbanner.js"></script>
+
+    <script src="https://www.antsoft.com.br/API/antsoftbanner.js"></script>
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/appinfo.js"></script>
     <script>
 
         $("#btnSearch").click(function () {
@@ -179,12 +192,12 @@
             $("#loading").html('<hr class="w-100 bg-danger"><h2>Aguarde carregando os registros...<i class="fa fa-spinner fa-lg fa-spin mr-2"></i></h2>');
             var sstr = $("#strDOI").val();
             if (!sstr) {
-                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning font-weight-bold'>Um valor do DEVE ser Informado!</h2></div>");
+                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning fw-bold'>Um valor do DEVE ser Informado!</h2></div>");
                 $("#loading").hide();
                 return;
             }
             var opt = ""
-            var opOrder="";
+            var opOrder = "";
             var radios = document.getElementsByName('DOIOption');
             var radioOrder = document.getElementsByName('rbOrder');
             for (var i = 0, length = radios.length; i < length; i++) {
@@ -199,36 +212,36 @@
             } else if (opt == "1") {
                 sstr = "filter=doi:" + sstr;
             } else if (opt == "2") {
-                sstr = "query.bibliographic=" + sstr.replace("&","%26");
+                sstr = "query.bibliographic=" + sstr.replace("&", "%26");
             } else if (opt == "3") {
                 sstr = "filter=issn:" + sstr;
             } else if (opt == "4") {
                 sstr = "query.author=" + sstr;
             } else {
-                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning font-weight-bold'>Uma opção deve ser selecionada!</h2></div>");
+                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning fw-bold'>Uma opção deve ser selecionada!</h2></div>");
                 $("#loading").hide();
                 return;
             }
-            var rows="rows=" + $("#ddlRows").val();
-            var isort= $("#ddlOrder").val();
-            var ssort="";
-            
-            if (isort==0){
-                ssort="sort=relevance"
-            }else if(isort==1){
-                ssort="sort=updated"
-            }else if(isort==2){
-                ssort="sort=deposited"
-            }else if(isort==3){
-                ssort="sort=published"
-            }else if(isort==4){
-                ssort="sort=issued"
-            }else if(isort==5){
-                ssort="sort=published-print"
-            }else if(isort==6){
-                ssort="sort=published-online"
+            var rows = "rows=" + $("#ddlRows").val();
+            var isort = $("#ddlOrder").val();
+            var ssort = "";
+
+            if (isort == 0) {
+                ssort = "sort=relevance"
+            } else if (isort == 1) {
+                ssort = "sort=updated"
+            } else if (isort == 2) {
+                ssort = "sort=deposited"
+            } else if (isort == 3) {
+                ssort = "sort=published"
+            } else if (isort == 4) {
+                ssort = "sort=issued"
+            } else if (isort == 5) {
+                ssort = "sort=published-print"
+            } else if (isort == 6) {
+                ssort = "sort=published-online"
             }
-            
+
             for (var i = 0, length = radioOrder.length; i < length; i++) {
                 if (radioOrder[i].checked) {
                     // do whatever you want with the checked radio
@@ -236,43 +249,43 @@
                     break;
                 }
             }
-            var ordem="";
+            var ordem = "";
             if (opOrder == "0") {
                 ordem = "order=asc"
             } else if (opOrder == "1") {
                 ordem += "order=desc";
             } else {
-                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning font-weight-bold'>Uma opção de ordenamento deve ser selecionada!</h2></div>");
+                $("#status").html("<div class='card card-body mt-2'><h2 class='text-warning fw-bold'>Uma opção de ordenamento deve ser selecionada!</h2></div>");
                 $("#loading").hide();
                 return;
             }
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "https://api.crossref.org/works?"+ rows + "&" + sstr  + "&" + ssort + "&" + ordem,
+                url: "https://api.crossref.org/works?" + rows + "&" + sstr + "&" + ssort + "&" + ordem,
                 success: function (data) {
-                    //  console.log(data.message.items[0].DOI);
+                    console.log(data.message.items[0]);
                     console.log(data);
                     matriz = data.message.items;
                     for (var i = 0; i < matriz.length; i++) {
                         id = i + 1;
-                        shtm += "<span class='badge badge-info mr-2'>" + id + "</span>"
+                        shtm += "<span class='badge text-bg-primary mr-2'>" + id + "</span>"
                         shtm += "Título: " + matriz[i].title + "<br/>";
                         shtm += "DOI: " + matriz[i].DOI + "<br/>";
-                        
+
                         shtm += "Revista: " + matriz[i]['container-title'] + "<br/>";
                         shtm += "Abreviação da Revista: " + matriz[i]['short-container-title'] + "<br/>";
-                        shtm += "Volume e Número: v." + matriz[i]['volume'] + ".i"+ matriz[i]['issue'] + "<br/>";
+                        shtm += "Volume e Número: v." + matriz[i]['volume'] + ".i" + matriz[i]['issue'] + "<br/>";
                         shtm += "Tipo de Publicação: " + matriz[i]['type'] + "<br/>";
                         shtm += "Publisher: " + matriz[i].publisher + "<br/>";
                         //for (var ii = 0; ii < matriz[i].link.length; ii++) {
-                            //shtm += "URL Original: " + matriz[i]['link'] + "<br/>";
+                        //shtm += "URL Original: " + matriz[i]['link'] + "<br/>";
                         //}
-                        if (opt !== "2" && opt!=="4") {
+                        if (opt !== "2" && opt !== "4") {
                             shtm += "ISSN: " + matriz[i]['ISSN'][0] + "<br/>";
                         }
                         shtm += "URL DOI: <a href='" + matriz[i]['URL'] + "' target='_blank'>" + matriz[i]['URL'] + "</a><br/>";
-                        shtm += '<div class="d-block"><a class="btn btn-primary " data-toggle="collapse" href="#collapseExample' + id + '" role="button" aria-expanded="false" aria-controls="collapseExample' + id + '">Abstract</a></div>';
+                        shtm += '<div class="d-block"><a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample' + id + '" role="button" aria-expanded="false" aria-controls="collapseExample' + id + '">Abstract</a></div>';
                         shtm += '<div class="collapse" id="collapseExample' + id + '"><div class="card card-body">';
                         shtm += matriz[i].abstract;
                         shtm += '</div></div>';
@@ -300,23 +313,20 @@
 
         });
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-    <script src="js/scrollreveal.min.js"></script>
     <script>
-        
+
         $(document).ready(function () {
             $("#loading").hide();
             $("#count").html('');
             $("#status").html('');
         });
     </script>
-    <script src="js/appinfo.js"></script>
     <script>
         $(document).ready(function () {
             AppInfo();
         })
+
     </script>
 </body>
-
 
 </html>
