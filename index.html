@@ -265,41 +265,41 @@
                 url: "https://api.crossref.org/works?" + rows + "&" + sstr + "&" + ssort + "&" + ordem,
                 success: function (data) {
                     console.log(data.message.items[0]);
-                    console.log(data);
+                    // console.log(data);
                     matriz = data.message.items;
                     for (var i = 0; i < matriz.length; i++) {
                         id = i + 1;
                         shtm += "<span class='badge text-bg-primary mr-2'>" + id + "</span>"
-                        shtm += "Título: " + matriz[i].title + "<br/>";
-                        shtm += "DOI: " + matriz[i].DOI + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Título: </span>" + matriz[i].title + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>DOI: </span>" + matriz[i].DOI + "<br/>";
 
-                        shtm += "Revista: " + matriz[i]['container-title'] + "<br/>";
-                        shtm += "Abreviação da Revista: " + matriz[i]['short-container-title'] + "<br/>";
-                        shtm += "Volume e Número: v." + matriz[i]['volume'] + ".i" + matriz[i]['issue'] + "<br/>";
-                        shtm += "Tipo de Publicação: " + matriz[i]['type'] + "<br/>";
-                        shtm += "Publisher: " + matriz[i].publisher + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Revista: </span>" + matriz[i]['container-title'] + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Abreviação da Revista: </span>" + matriz[i]['short-container-title'] + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Volume e Número: v.</span>" + matriz[i]['volume'] + ".i" + matriz[i]['issue'] + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Tipo de Publicação: </span>" + matriz[i]['type'] + "<br/>";
+                        shtm += "<span class='fw-bold ml-3'>Publisher: </span>" + matriz[i].publisher + "<br/>";
                         //for (var ii = 0; ii < matriz[i].link.length; ii++) {
                         //shtm += "URL Original: " + matriz[i]['link'] + "<br/>";
                         //}
                         if (opt !== "2" && opt !== "4") {
-                            shtm += "ISSN: " + matriz[i]['ISSN'][0] + "<br/>";
+                            shtm += "<span class='fw-bold ml-3'>ISSN: </span>" + matriz[i]['ISSN'][0] + "<br/>";
                         }
-                        shtm += "URL DOI: <a href='" + matriz[i]['URL'] + "' target='_blank'>" + matriz[i]['URL'] + "</a><br/>";
+                        shtm += "<span class='fw-bold ml-3'>URL DOI: </span><a href='" + matriz[i]['URL'] + "' target='_blank'>" + matriz[i]['URL'] + "</a><br/>";
                         shtm += '<div class="d-block"><a class="btn btn-primary " data-bs-toggle="collapse" href="#collapseExample' + id + '" role="button" aria-expanded="false" aria-controls="collapseExample' + id + '">Abstract</a></div>';
                         shtm += '<div class="collapse" id="collapseExample' + id + '"><div class="card card-body">';
                         shtm += matriz[i].abstract;
                         shtm += '</div></div>';
                         var date = new Date(matriz[i].created.timestamp);
-                        shtm += "Data do Depósito: " + date.toLocaleDateString("pt-BR") + "<hr class='w-100 bg-primary'/>";
+                        shtm += "<span class='fw-bold ml-3'>Data do Depósito: </span>" + date.toLocaleDateString("pt-BR") + "<hr class='w-100 bg-primary'/>";
                     };
-                    $("#dois").html('<hr class="w-100 bg-info"/>' + shtm);
+                    $("#dois").html('<hr class="w-100 text-primary rounded" style="height: 5px;"/>' + shtm);
                     $("#loading").hide();
-                    $("#count").html('<h4 class="m-3 p-3 bg-light">Foi(ram) localizado(s) <span class="badge badge-danger">' + matriz.length + '</span> registro(s)</h4>');
+                    $("#count").html('<h4 class="m-3 p-3 bg-light">Foi(ram) localizado(s) <span class="badge text-bg-danger">' + matriz.length + '</span> registro(s)</h4>');
                     $("#status").html('');
                 },
                 error: function (data) {
                     console.log(data);
-                    $("#status").html('<hr class="w-100 bg-info"/><div class="card card-body p-3"><h2 class="text-warning">Erro ao carregar os DOIS!</h2><p class="lead">Verifique se os dados informados são compatíveis com a opção selecionada!</p></div>');
+                    $("#status").html('<hr class="w-100 text-primary rounded" style="height: 5px;""/><div class="card card-body p-3"><h2 class="text-warning">Erro ao carregar os DOIS!</h2><p class="lead">Verifique se os dados informados são compatíveis com a opção selecionada!</p></div>');
                     $("#dois").html('');
                     return;
                 },
