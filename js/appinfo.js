@@ -2,14 +2,14 @@
 function AppInfo() {
 
     //Exibe as informações do sistema
-    var DateUpdate = new Date(2026, 1, 27);
+    var DateUpdate = new Date(2026, 1, 28);
     var now = new Date();
     var start = new Date(2020, 1, 1);
     var diff = DateUpdate - start;
     var oneDay = 1000 * 60 * 60 * 24;
     var day = Math.floor(diff / oneDay);
-    var titleApp = "AntSoft DS • Buscador de DOI's no CrossRef"
-    versao = "Versão: 0.7." + day + "." + DateUpdate.getFullYear().toString().substr(-2) + ("0" + (DateUpdate.getMonth())).slice(-2) + " • Atualizado em: " + DateUpdate.toLocaleDateString("pt-BR");
+    var titleApp = "<strong>AntSoft DS • Buscador de DOI's no CrossRef</strong>"
+    versao = "Versão: 0.7." + day + "." + DateUpdate.getFullYear().toString().slice(-2) + ("0" + (DateUpdate.getMonth())).slice(-2) + " • Atualizado em: " + DateUpdate.toLocaleDateString("pt-BR");
     $("#version").html('<p class="text-center font-weight-bold">' + titleApp + '<br/>' + versao + '</p>');
 
 };
@@ -37,6 +37,7 @@ $(function () {
     var includes = $('[data-include]')
     $.each(includes, function () {
         var file = $(this).data('include') + '.html'
-        $(this).load(file)
+        $(this).load(file);
+        console.log('Incluindo: ' + file);
     })
 })
