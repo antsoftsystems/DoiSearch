@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="https://www.w3.org/1999/xhtml" lang="pt-br">
+<html xmlns="https://www.w3.org/1999/xhtml">
 
 <head data-include="header">
 
@@ -13,8 +13,7 @@
                 <div class="col-12">
                     <h1 class="text-center fw-bold">
                         <span class="text-danger">AntSoft DS</span> • <span class="small">
-                            Buscador de DOI's no
-                            CrossRef
+                            Buscador de DOI's no CrossRef
                         </span>
                     </h1>
                     <hr class="w-100 bg-danger" />
@@ -49,16 +48,16 @@
                                     </label>
                                     <select id="ddlOrder" class="form-select">
                                         <option selected value="0">Relevância</option>
-                                        <option selected value="1">Data Atualização</option>
-                                        <option selected value="2">Data Depósito</option>
-                                        <option selected value="3">Data Publicação</option>
-                                        <option selected value="4">Número do volume</option>
-                                        <option selected value="5">Data da publicação impressa</option>
-                                        <option selected value="6">Data da publicação online</option>
+                                        <option value="1">Data Atualização</option>
+                                        <option value="2">Data Depósito</option>
+                                        <option value="3">Data Publicação</option>
+                                        <option value="4">Número do volume</option>
+                                        <option value="5">Data da publicação impressa</option>
+                                        <option value="6">Data da publicação online</option>
                                     </select>
                                     <input type="radio" class="radio" value="0" name="rbOrder" checked />
                                     <label for="orderAsc" class="mr-3">Crescente</label>
-                                    <input type="radio" class="radio" value="1" name="rbOrder" ch />
+                                    <input type="radio" class="radio" value="1" name="rbOrder" />
                                     <label for="orderDesc" class="mr-3">Decrescente</label>
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
@@ -131,7 +130,7 @@
     <div class="container-fluid footer">
         <div class="row">
             <div class="col-6">
-                <div id="antsoft"></div>
+                <div id="credit"></div>
                 <div class="text-center small">
                     <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
                         <img alt="Licença Creative Commons" style="border-width:0"
@@ -143,12 +142,9 @@
             </div>
             <div class="col-6">
                 <span id="version"></span>
-
                 <p class="text-center">
                     Este sistema usa <a href="https://github.com/CrossRef/rest-api-doc" target="_blank">
-                        API do
-                        CrossRef
-                    </a>, extraíndo os dados diretamente da base de dados original.
+                        API do CrossRef</a>, extraíndo os dados diretamente da base de dados original.
                 </p>
             </div>
 
@@ -176,11 +172,16 @@
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
     </script>
 
-    <script src="https://www.antsoft.com.br/API/antsoftbanner.js"></script>
+    
     <script src="js/scrollreveal.min.js"></script>
     <script src="js/appinfo.js"></script>
+    <script src="js/credits.js"></script>
     <script>
-
+        $("#strDOI").keyup(function (e) {
+            if (e.which === 13) {
+                $("#btnSearch").click();
+            };
+        });
         $("#btnSearch").click(function () {
             console.log('Start');
             var shtm = '';
@@ -264,8 +265,7 @@
                 dataType: "json",
                 url: "https://api.crossref.org/works?" + rows + "&" + sstr + "&" + ssort + "&" + ordem,
                 success: function (data) {
-                    console.log(data.message.items[0]);
-                    // console.log(data);
+
                     matriz = data.message.items;
                     for (var i = 0; i < matriz.length; i++) {
                         id = i + 1;
@@ -327,6 +327,7 @@
         })
 
     </script>
+
 </body>
 
 </html>
