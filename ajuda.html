@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml">
+
+<head data-include="header">
+
+</head>
+
+<body>
+    <section data-include="menu"></section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Ajuda - Busca de Artigos no Crossref</h1>
+                    <p>Esta ferramenta consulta a base de dados do <strong>Crossref</strong> e exibe informações de
+                        artigos
+                        científicos:
+                        título, autores, revista, ISSN, volume, páginas, DOI, abstract e referência no modelo APA.</p>
+                    <hr>
+                    <h2>Sumário</h2>
+                    <ol>
+                        <li><a href="#como-usar">Como usar</a></li>
+                        <li><a href="#opcoes-busca">Opções de busca</a></li>
+                        <li><a href="#ordenacao">Ordenação dos resultados</a></li>
+                        <li><a href="#quantidade">Quantidade de resultados</a></li>
+                        <li><a href="#referencia">Referência APA</a></li>
+                        <li><a href="#copiar">Copiar DOI e Referência</a></li>
+                        <li><a href="#abstract">Visualizar o abstract</a></li>
+                        <li><a href="#filtragem">Por que alguns resultados são descartados</a></li>
+                        <li><a href="#dicas">Dicas por tipo de busca</a></li>
+                        <li><a href="#problemas">Solução de problemas</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="como-usar">1. Como usar</h2>
+                    <ol>
+                        <li>No campo de texto, digite o valor correspondente à opção escolhida (por exemplo, um DOI, um
+                            título,
+                            um nome
+                            de autor).</li>
+                        <li>No seletor <strong>Opção</strong>, escolha o tipo de busca desejado.</li>
+                        <li>Defina a <strong>ordenação</strong> (campo e direção).</li>
+                        <li>Escolha a <strong>quantidade de registros</strong> a exibir.</li>
+                        <li>Clique em <strong>Buscar</strong> ou pressione <strong>Enter</strong>.</li>
+                    </ol>
+                    <p>Os resultados aparecem abaixo do formulário. Durante a consulta é exibida a mensagem <em>"Aguarde
+                            carregando os
+                            registros..."</em>.</p>
+
+                    <hr>
+
+                    <h2 id="opcoes-busca">2. Opções de busca</h2>
+
+                    <h3>DOI do artigo</h3>
+                    <p>Busca <strong>exata</strong> pelo DOI (Digital Object Identifier). É a forma mais precisa e
+                        retorna
+                        apenas o
+                        artigo correspondente.</p>
+                    <p><strong>Exemplo:</strong> <code>10.1590/S0102-311X2020000100001</code></p>
+
+                    <h3>Prefixo DOI</h3>
+                    <p>Retorna todos os artigos que compartilham o mesmo prefixo de DOI (normalmente associado a um
+                        publisher ou
+                        instituição).</p>
+                    <p><strong>Exemplo:</strong> <code>10.1590</code></p>
+
+                    <h3>Título</h3>
+                    <p>Busca por palavras no título do artigo. A ferramenta aplica um filtro adicional: <strong>todas as
+                            palavras
+                            digitadas devem estar presentes no título</strong> para que o registro seja exibido. Isso
+                        elimina
+                        resultados
+                        genéricos retornados pela API.</p>
+                    <p><strong>Exemplo:</strong> <code>saúde mental pandemia</code></p>
+                    <p><strong>Atenção:</strong> palavras com menos de 3 letras são ignoradas pelo filtro (artigos,
+                        preposições
+                        e
+                        conjunções como "de", "da", "os", "um").</p>
+
+                    <h3>Autor(es)</h3>
+                    <p>Busca por nome de autor. A ferramenta valida se ao menos um dos autores do artigo contém todas as
+                        palavras
+                        informadas no nome (sobrenome e/ou nome).</p>
+                    <p><strong>Exemplo:</strong> <code>Silva João</code> ou <code>Silva</code></p>
+
+                    <h3>ISSN</h3>
+                    <p>Busca exata pelo ISSN da revista (International Standard Serial Number). Retorna artigos
+                        publicados
+                        naquele
+                        periódico.</p>
+                    <p><strong>Exemplo:</strong> <code>0102-311X</code></p>
+
+                    <h3>Afiliação Institucional</h3>
+                    <p>Busca por instituição declarada pelos autores. A ferramenta valida se ao menos uma afiliação
+                        contém
+                        todas
+                        as
+                        palavras informadas.</p>
+                    <p><strong>Exemplo:</strong> <code>Universidade de São Paulo</code></p>
+
+                    <h3>Nome do Publisher</h3>
+                    <p>Busca pelo nome da editora responsável pela publicação. A ferramenta valida se todas as palavras
+                        estão
+                        presentes
+                        no nome do publisher.</p>
+                    <p><strong>Exemplo:</strong> <code>Elsevier</code></p>
+
+                    <hr>
+
+                    <h2 id="ordenacao">3. Ordenação dos resultados</h2>
+                    <p>É possível escolher o critério de ordenação:</p>
+                    <ul>
+                        <li><strong>Relevância</strong> - mais relevantes primeiro (recomendado para buscas textuais).
+                        </li>
+                        <li><strong>Última atualização</strong> - registros atualizados mais recentemente.</li>
+                        <li><strong>Data de depósito</strong> - data em que o registro foi incluído no Crossref.</li>
+                        <li><strong>Data de publicação</strong> - data de publicação do artigo.</li>
+                        <li><strong>Data de emissão</strong> - data de emissão do DOI.</li>
+                        <li><strong>Publicado (impresso)</strong> - data da versão impressa.</li>
+                        <li><strong>Publicado (online)</strong> - data da versão online.</li>
+                    </ul>
+                    <p>Também é possível escolher a direção: <strong>crescente</strong> ou <strong>decrescente</strong>.
+                    </p>
+                    <p><strong>Dica:</strong> para buscas por título, autor, afiliação ou publisher, prefira a ordenação
+                        por
+                        <strong>Relevância</strong>, pois ela usa a pontuação calculada pela própria API.
+                    </p>
+
+                    <hr>
+
+                    <h2 id="quantidade">4. Quantidade de resultados</h2>
+                    <p>O seletor de linhas define quantos registros a ferramenta exibirá. Para buscas textuais (título,
+                        autor,
+                        afiliação, publisher), a ferramenta consulta um número maior na API e depois filtra, garantindo
+                        que
+                        você
+                        receba
+                        resultados realmente relevantes.</p>
+
+                    <hr>
+
+                    <h2 id="referencia">5. Referência APA</h2>
+                    <p>Marque a caixa <strong>Gerar referência APA</strong> para que cada resultado inclua uma
+                        referência
+                        formatada no
+                        modelo APA, com autores, ano, título, revista, volume, número, páginas e DOI.</p>
+                    <p>O botão <strong>Copiar Referência</strong> ao lado permite copiar o texto para a área de
+                        transferência.
+                    </p>
+
+                    <hr>
+
+                    <h2 id="copiar">6. Copiar DOI e Referência</h2>
+                    <ul>
+                        <li><strong>Copiar DOI</strong> - copia o DOI do artigo.</li>
+                        <li><strong>Copiar Referência</strong> - copia o texto da referência APA (disponível apenas se a
+                            opção
+                            estiver
+                            marcada).</li>
+                    </ul>
+                    <p>Ao copiar com sucesso, é exibida a mensagem <em>"Copiado para a área de transferência!"</em>.</p>
+                    <p><strong>Observação:</strong> o nave中间dor precisa permitir o acesso à área de transferência. Em
+                        conexões
+                        não
+                        seguras (HTTP), a cópia pode falhar. Use HTTPS ou localhost.</p>
+
+                    <hr>
+
+                    <h2 id="abstract">7. Visualizar o abstract</h2>
+                    <p>Cada resultado possui um botão <strong>Abstract</strong>. Ao clicar, o resumo do artigo é
+                        expandido.
+                        Clique
+                        novamente para recolher. Se o artigo não tiver abstract cadastrado no Crossref, é exibida a
+                        mensagem
+                        <em>"Sem
+                            abstract."</em>.
+                    </p>
+
+                    <hr>
+
+                    <h2 id="filtragem">8. Por que alguns resultados são descartados</h2>
+                    <p>A API do Crossref realiza buscas textuais amplas e pode retornar registros que contenham apenas
+                        parte
+                        dos
+                        termos
+                        digitados, além de registros de tipos que não são artigos de revista. Para garantir qualidade, a
+                        ferramenta
+                        aplica filtros adicionais no navegador:</p>
+                    <ul>
+                        <li><strong>Filtro por tipo</strong> - apenas artigos de revista (<code>journal-article</code>)
+                            e
+                            revistas
+                            (<code>journal</code>) são exibidos.</li>
+                        <li><strong>Filtro por campo</strong> - o termo digitado é validado no campo correspondente
+                            (título,
+                            autor,
+                            afiliação ou publisher).</li>
+                        <li><strong>Filtro por pontuação</strong> - registros com pontuação de relevância muito baixa
+                            são
+                            descartados.
+                        </li>
+                    </ul>
+                    <p>O contador no topo dos resultados mostra quantos registros foram exibidos, quantos a API retornou
+                        e
+                        quantos foram
+                        descartados.</p>
+                    <p>Se o filtro rigoroso não retornar nenhum resultado, a ferramenta relaxa o filtro automaticamente
+                        e
+                        exibe
+                        os
+                        melhores resultados por relevância, com o aviso <strong>"filtro relaxado"</strong>.</p>
+
+                    <hr>
+
+                    <h2 id="dicas">9. Dicas por tipo de busca</h2>
+
+                    <h3>Título</h3>
+                    <ul>
+                        <li>Use 2 a 5 palavras significativas do título.</li>
+                        <li>Evite palavras muito comuns (artigos, preposições).</li>
+                        <li>Se não encontrar nada, reduza o número de palavras.</li>
+                    </ul>
+
+                    <h3>Autor</h3>
+                    <ul>
+                        <li>Informe o sobrenome primeiro: <code>Silva João</code>.</li>
+                        <li>Se houver muitas variantes do nome, busque apenas pelo sobrenome.</li>
+                        <li>Nomes com acento são normalizados automaticamente.</li>
+                    </ul>
+
+                    <h3>Afiliação</h3>
+                    <ul>
+                        <li>Use o nome oficial da instituição.</li>
+                        <li>Evite siglas isoladas; prefira o nome completo.</li>
+                    </ul>
+
+                    <h3>Publisher</h3>
+                    <ul>
+                        <li>Use o nome exato ou parte dele.</li>
+                        <li>Para editoras com nomes compostos, informe as palavras principais.</li>
+                    </ul>
+
+                    <h3>DOI e Prefixo</h3>
+                    <ul>
+                        <li>Cole o DOI completo, sem a URL (<code>https://doi.org/</code>).</li>
+                        <li>Para prefixo, informe apenas a parte numérica inicial.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="problemas">10. Solução de problemas</h2>
+
+                    <h3>"Um valor DEVE ser informado!"</h3>
+                    <p>O campo de busca está vazio. Digite um valor antes de buscar.</p>
+
+                    <h3>"Uma opção deve ser selecionada!"</h3>
+                    <p>Nenhuma opção de busca foi escolhida no seletor.</p>
+
+                    <h3>"Uma opção de ordenamento deve ser selecionada!"</h3>
+                    <p>Nenhuma direção de ordenação (crescente ou decrescente) foi marcada.</p>
+
+                    <h3>"Erro ao carregar os DOIs!"</h3>
+                    <p>A consulta à API falhou. Verifique:</p>
+                    <ul>
+                        <li>Sua conexão com a internet.</li>
+                        <li>Se o valor informado é compatível com a opção escolhida.</li>
+                        <li>Se a API do Crossref está disponível (tente novamente em alguns instantes).</li>
+                    </ul>
+
+                    <h3>"Nenhum resultado relevante encontrado"</h3>
+                    <p>A API retornou registros, mas nenhum passou pelo filtro de campo. Tente:</p>
+                    <ul>
+                        <li>Reduzir o número de palavras.</li>
+                        <li>Usar termos mais gerais.</li>
+                        <li>Trocar a opção de busca (por exemplo, de Título para Autor).</li>
+                    </ul>
+
+                    <h3>"Erro ao copiar texto"</h3>
+                    <p>O navegador bloqueou o acesso à área de transferência. Verifique se a página está em HTTPS ou em
+                        localhost. Em
+                        alguns navegadores, é necessário conceder permissão manualmente.</p>
+
+                    <h3>Resultados demoram a aparecer</h3>
+                    <p>Buscas textuais amplas podem demorar mais. Reduza a quantidade de linhas ou use termos mais
+                        específicos.
+                    </p>
+
+                    <hr>
+
+                    <h2>Informações técnicas</h2>
+                    <ul>
+                        <li><strong>Fonte dos dados:</strong> API pública do Crossref
+                            (<code>https://api.crossref.org/works</code>).
+                        </li>
+                        <li><strong>Normalização:</strong> acentos, pontuação e caixa são ignorados nos filtros.</li>
+                        <li><strong>Privacidade:</strong> nenhum dado é armazenado; as consultas são feitas diretamente
+                            do
+                            navegador à
+                            API do Crossref.</li>
+                    </ul>
+
+                    <hr>
+
+                    <p><em>Documentação gerada para a ferramenta de busca de artigos no Crossref.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="w-100" />
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col-6">
+                <div id="credit"></div>
+                <div class="text-center small">
+                    <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+                        <img alt="Licença Creative Commons" style="border-width:0"
+                            src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+                    </a><br />Este obra está licenciado
+                    com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+                        target="_blank">Creative Commons Atribuição 4.0 Internacional</a>.
+                </div>
+            </div>
+            <div class="col-6">
+                <span id="version"></span>
+                <p class="text-center">
+                    Este sistema usa <a href="https://github.com/CrossRef/rest-api-doc" target="_blank">
+                        API do CrossRef</a>, extraíndo os dados diretamente da base de dados original.
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <div class="scroll-top-wrapper">
+        <span class="scroll-top-inner">
+            <i class="fa fa-arrow-up"></i>
+            <br />
+            Topo
+        </span>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        //ativa o popover
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
+
+
+    <script src="js/scrollreveal.min.js"></script>
+    <script src="js/appinfo.js"></script>
+    <script src="js/credits.js"></script>
+
+</body>
+
+</html>
